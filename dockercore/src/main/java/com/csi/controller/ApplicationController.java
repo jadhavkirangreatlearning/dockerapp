@@ -55,6 +55,16 @@ public class ApplicationController {
                 new Employee(125, "SWARAJ", 85000)).toList().stream().sorted(Comparator.comparing(Employee::getEmpName)).collect(Collectors.toList()));
     }
 
+    //added api for sortbysalary
+    @GetMapping("/sortbysalary")
+    public ResponseEntity<List<Employee>> sortBySalary() {
+        return ResponseEntity.ok(Stream.of(new Employee(121, "SWARA", 65000),
+                new Employee(122, "RAM", 95000),
+                new Employee(123, "LAKSHMI", 75000),
+                new Employee(124, "KUMAR", 65000),
+                new Employee(125, "SWARAJ", 85000)).toList().stream().sorted(Comparator.comparingDouble(Employee::getEmpSalary)).collect(Collectors.toList()));
+    }
+
 
 }
 
